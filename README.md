@@ -99,23 +99,45 @@ tags: html5
 * 全局属性（见1.1全局属性）
 
 
+### 2.新增的主体结构元素
 
+#### 2.1 article元素
 
+![](./img/article元素.png)
 
+```html
+<article>
+  <header>
+    <h1>主标题</h1>
+  </header>
+  <aside id="entry-meta">作者:xxx 时间:<time datetime="xxxx-xx-xx">xxxx-xx-xx</time></aside>
+  <div id="entry-content"><p>内容描述</P></div>
+</article>
+```
 
+#### 2.2 aside元素
 
+![](./img/aside元素.png)
 
+表示article标签内容之外的，与article标签内容相关的辅助信息。
 
+#### 3.3 nav元素
 
+![](./img/nav元素.png)
 
+```html
+<nav>
+  <ul>
+    <li>首页</li>
+    <li>导航1</li>
+    <li>导航2</li>
+  </ul>
+</nav>
+```
 
+#### 3.4 section元素
 
-
-
-
-
-
-
+![](./img/section元素.png)
 
 
 
