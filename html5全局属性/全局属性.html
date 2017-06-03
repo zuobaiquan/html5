@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <style type="text/css">
+        /*可以自定义样式如下：使用轮廓线代替边框，因为它不会向盒状模型添加元素，所以页面区域不会在触发时突然闪现。*/
+        [contenteditable]:hover, [contenteditable]:focus {
+            outline: 2px dotted red;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>contenteditable属性</h2>
+    <ul contenteditable="true">
+        <li>列表1</li>
+        <li>列表2</li>
+    </ul>
+
+    <h2>hidden属性（非表单hidden属性）</h2>
+    <ul hidden="hidden">
+        <li>列表1</li>
+        <li>列表2</li>
+    </ul>
+
+    <textarea spellcheck="true" cols="60" rows="5"> </textarea>
+
+    <form>
+　　　　<label>姓名: <input type="text" name="name" tabindex="2"/></label><br/>
+　　　　<label>身份证号: <input type="text" name="city" tabindex="-1"/></label></br>
+　　　　<label>准考证号: <input type="text" name="country" tabindex="1"/></label></br>
+　　　　<input type="submit" value="查询" tabindex="3"/>
+    </form>
+
+</body>
+</html>
