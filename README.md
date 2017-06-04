@@ -511,7 +511,7 @@ pattern属性适用于input[text,search,url,telephone,email,password]
 
 ![](./img/range.png)
 
-#### 5.5Date Pickers(日期选择器)
+#### 5.5 Date Pickers(日期选择器)
 
 拥有多个可供选取日期和时间的新输入类型。
 
@@ -666,9 +666,9 @@ html中：
 <object data="flash.swf" type="application/x-shockwave-flash"></object>
 ```
 
-#### 6.4 其他功能标签
+### 7 其他功能标签
 
-##### 6.4.1 mark标签
+#### 7.1 mark标签
 
 黄色高亮显示选择文本。主要用来在视觉上向用户呈现哪些需要突出显示或高亮显示的文字。典型应用搜索结果中高亮显示搜素关键字。
 
@@ -681,5 +681,74 @@ html中：
 
 ![](./img/mark.png)
 
+#### 7.2 progress标签
 
+状态标签（任务过程：安装、加载）。
 
+表示运行中的进程，可以使用progress元素显示JavaScript中耗时时间函数的进程。等待中……、请稍后等。
+
+```html
+<progress value="40" max="100">40%</progress>
+```
+
+![](./img/progress标签.png)
+
+#### 7.3 details标签
+
+用于描述文档或文档某个部分的细节 。 
+可与 **summary** 标签配合使用，summary可以为 details 定义标题。标题是可见的，用户点击标题时，会显示出 details。summary应该是details的第一个子元素。
+
+**tip**:可以通过<details open>添加一个open属性，默认显示展开状态。
+
+举例：details配合summary实现总结-详细效果：
+
+```html
+<details>
+    <summary>Name & Extension:</summary>
+    <p>
+        <input type=text name=fn value="Pillar Magazine.pdf"/>
+    </p>
+    <p>
+        <label>
+            <input type=checkbox name=ext checked/>
+            Hide extension
+        </label>
+    </p>
+</details>
+```
+
+![](./img/details.png)
+
+### 8. 废除标签
+
+#### 8.1 可以使用css代替的标签
+
+ 删除basefont,big,center,font,s,strike,tt,u这些纯表现的元素,html5中提倡把画面展示性功能放在css中统一编辑。。
+
+#### 8.2 html5不再使用frame
+
+不再用frame,noframes和frameset，这些标签对可用性产生负面影响。HTML5中不支持frame框架，只支持iframe框架，或者用服务器方创建的由多个页面组成的符合页面的形式，删除以上这三个标签。
+
+#### 8.3 只有个别浏览器支持的标签
+
+bgsound背景音乐，blink文字闪烁，marquee文字滚动,applet
+
+#### 8.4 其他不常用的标签
+
+ul替代dir
+
+pre替代listing
+
+code替代xmp
+
+ruby替代rb
+
+abbr替代acronym
+
+废除isindex使用form与input相结合的方式替代。
+
+废除listing使用pre替代
+
+废除nextid使用guids
+
+废除plaintex使用“text/plian”（无格式正文）MIME类型替代。
