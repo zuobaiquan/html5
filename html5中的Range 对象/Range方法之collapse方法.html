@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>Title</title>
+<script>
+var rangeObj=document.createRange();
+function selectRangeContens() {
+    var div=document.getElementById("div");
+    rangeObj.selectNode(div);
+}
+function  unselect() {
+    rangeObj.collapse(false);
+}
+function showRange() {
+    alert(rangeObj.toString());
+}
+</script>
+</head>
+<body>
+<div id="div" style="background-color: cadetblue; width: 300px;height: 50px;">
+    说好的幸福呢？
+</div>
+<button onclick="selectRangeContens()">选择元素</button>
+<button onclick=" unselect()">取消元素</button>
+<button onclick="showRange() ">显示Range内容</button>
+</body>
+</html>

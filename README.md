@@ -727,9 +727,53 @@ html中：
 
 progress标签巧妙用法
 
+```html
+<script type="text/javascript">
+    function btn(){
+      //	js是单线程，需要先执行for循环
+      //    for(var i=0;i<100;i++){
+      //        setTimeout(updateProgress(i),1000);
+      //    }
+      	var i=0;
+      	function thread_one(){
+        	if(i<100){
+          		i++;
+          		updateProgress(i);
+        	}
+      	}
+      	setInterval(thread_one,10);
+    }
+    function updateProgress(newValue){
+        var progressBar=document.getElementById('progressId');
+        progressBar.value=newValue;
+        progressBar.getElementsByTagName("span")[0].innerHTML=newValue;
+    }
+</script>
+</head>
+<body>
+<section>
+    <h3>progress元素的使用</h3>
+    <p>完成百分比<progress id="progressId" style="background: #269abc" max="100"><span>0</span>%</progress></p>
+    <input type="button" onclick="btn()" n value="点击">
+</section>
+</body>
+```
 
-
-
+```
+//textContent与innerHTML区别
+//https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent
+// IE:innerText   FF:textContent  W3C:innerHTML
+// innerText返回或者设置DOM元素的文本; innerHTML返回或者设置DOM元素的子元素
+// 区别：取值时 innerText会把只会获取节点里面的文本信息，而innerHTML 会获取节点下面的所有标签。
+// innerHTML是符合W3C标准的属性，而innerText只适用于IE浏览器，
+// 因此，尽可能地去使用innerHTML，而少用innerText
+// IE中的innerText是需要对innerHTML的值进行：
+//   1、HTML转义（等同于XML转义，对<、&等转义字符进行处理）；
+//   2、经过HTML解释和CSS样式解释；
+//   3、之后又剔除格式信息之后留下的纯文本。
+//  而FF中的textContent没有2、3步，在经过了HTML转义之后直接剔除所有html标签后得到的纯文本。
+//  原文章地址:http://www.jb51.net/article/25082.htm
+```
 
 #### 7.3 details标签
 

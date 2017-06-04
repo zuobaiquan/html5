@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>Title</title>
+<script>
+function deleteChar() {
+    var div=document.getElementById("mydiv");
+    //节点中的第一个子元素,对象，如果节点中没有包含第一个子元素，将传回null
+    var textNode=div.firstChild;
+    var rangeObj=document.createRange();
+    //删除第一个字段到第四个字段
+    rangeObj.setStart(textNode,1);
+    rangeObj.setEnd(textNode,4);
+    rangeObj.deleteContents();
+}
+</script>
+</head>
+<body>
+<div id="mydiv">12345测试删除文字功能aaaaa</div>
+<button onclick="deleteChar()">删除文字</button>
+</body>
+</html>

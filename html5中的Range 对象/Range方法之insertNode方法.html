@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>Title</title>
+<script>
+function moveButton() {
+    var btn=document.getElementById("button");
+    var selection=document.getSelection();
+    if(selection.rangeCount>0){
+        var range=selection.getRangeAt(0);
+        range.insertNode(btn);
+    }
+}
+</script>
+</head>
+<body>
+<div onmouseup="moveButton()" style="width:400px;background-color: cornflowerblue">
+    web前端 HTML5 hello world
+</div>
+<button id="button">按钮</button>
+</body>
+</html>

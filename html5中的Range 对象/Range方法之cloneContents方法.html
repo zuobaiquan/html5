@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>Title</title>
+<script>
+function cloneContent() {
+    var div=document.getElementById("div1");
+    var rangeObj=document.createRange();
+    rangeObj.selectNodeContents(div);
+    var docFrangMent=rangeObj.cloneContents();
+    div.appendChild(docFrangMent);
+}
+</script>
+</head>
+<body>
+<div id="div1">
+    *小萌货*
+    <br/>
+    <button onclick="cloneContent()">克隆</button>
+    <br/>
+</div>
+</body>
+</html>
