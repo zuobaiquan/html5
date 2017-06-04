@@ -72,5 +72,17 @@
         <input type="email" name="user_email" id="user_mail" />
         <button type="submit">提交</button>
     </form>
+    <datalist id="country_list">
+        <select name="country">
+            <option value="AF">Afghanistan</option>
+            <option value="AX">Aland Islands</option>
+            <option value="AL">Albania</option>
+            <option value="DZ">Algeria</option>
+            <option value="AS">American Samoa</option>
+            <!-- more -->
+        </select>
+        If other, please specify:
+    </datalist>
+    <input type="text" name="country" id="country" list="country_list">
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <script type="text/javascript">
+        function btn(){
+//            for(var i=0;i<100;i++){
+//                setTimeout(updateProgress(i),1000);
+//            }
+            var i=0;
+            function thread_one(){
+                if(i<=100){
+                    i++;
+                    updateProgress(i);
+                }
+            }
+            setInterval(thread_one,10);
+        }
+
+        function updateProgress(newValue){
+            var progressBar=document.getElementById('progressId');
+            progressBar.value=newValue;
+            progressBar.getElementsByTagName("span")[0].innerHTML=newValue;
+            //textContent与innerHTML区别
+            //https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent
+        }
+    </script>
+</head>
+<body>
+
+<section>
+    <h3>progress元素的使用</h3>
+    <p>完成百分比<progress id="progressId" style="background: #269abc" max="100"><span>0</span>%</progress></p>
+    <input type="button" onclick="btn()" n value="点击">
+</section>
+
+</body>
+</html>
