@@ -551,6 +551,36 @@ firefox不支持。
 
 ![](./img/color.png)
 
+#### 5.8 max，min和step属性
+
+max,min和step属性用来为包含数字或日期的input类型规定限定或者说约束。
+
+max属性规定输入域所允许的最大值。
+
+min属性规定输入域允许的最小值。
+
+step属性为输入域规定合法的数字间隔。（假如 step="3"，则合法数字应该是 -3、0、3、6，以此类推）step 属性可以与 max 以及 min 属性配合使用，以创建合法值的范围。
+
+max,min,step属性适用于input[datepickers,number，range]。
+
+举例：
+
+这是一个非常好的属性，之前有人问我用<input type="time">来输入时间，奈何firefox浏览器不支持怎么办。可以通过min max 模拟实现一个时间输入框，小时允许输入[0~23]，分钟允许输入[0~59]。
+
+```html
+<form action="demo_form.jsp" method="get">
+    <label>time小时，分钟：<input type="time" name="user_time"></label>
+    <p>input类型time在firefox下不支持，给出模拟实现方案</p>
+    <label><input type="number" min="0" max="23" step="1">时</label>
+    <label><input type="number" min="0" max="59">分</label>
+    <input type="submit" value="提交"/>
+</form>
+```
+
+![](./img/maxmin.png)
+
+更多细节可参考[HTML5 number类型文本框step属性的验证机制](http://www.zhangxinxu.com/wordpress/2012/12/html5-number-input-step-invidate/)
+
 ### 6.媒体标签
 
 html5对媒体标签的支持非常好，把它们变成跟文字，图片同样重要的标签。
@@ -719,6 +749,90 @@ html中：
 
 ![](./img/details.png)
 
+#### 7.4 link新增sizes属性
+
+为link增加sizes属性。sizes 属性规定被链接资源的尺寸。只有当被链接资源是图标时 (rel="icon")，才能使用该属性。该属性可接受多个值。值由空格分隔。
+
+网上千篇一律都是这样写的：
+
+```html
+<link rel="icon" href="img/demo_icon.ico" type="image/gif" sizes="16x16" />
+```
+
+但是经过测试用不用sizes都一样，没看出sizes有什么作用。查了一下目前几乎**没有主流浏览器支持 sizes 属性**。
+
+#### 7.5 ol新增reversed属性
+
+reversed是个bool属性，规定有序列表倒序。
+
+举例：有序列表起始值50，倒序。
+
+```html
+<ol start="50" reversed>
+    <li>coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+</ol>
+```
+
+![](./img/ol新增reversed属性.png)
+
+#### 7.6 style新增scoped属性
+
+html5为style增加scoped属性。有了一个样式作用域的概念，它允许我们为**文档的指定部分定义样式，而不是整个文档**。如果使用 "scoped" 属性，那么所规定的样式只能应用到 style 元素的父元素及其子元素。 **scoped为开发单页面样式带来方便**，但不能常用，否则css难以维护。
+
+举例：
+
+```html
+<!-- 这个article正常使用head里声明的style -->
+<article>
+    <h1>h1标签内容</h1>
+    <p>p标签内容</p>
+</article>
+
+<article>
+    <!-- 这里声明的style只能让该article以及子元素使用 -->
+    <style scoped>
+        h1,p{ color: hotpink; }
+        article { border: solid 1px hotpink; }
+    </style>
+    <h1>h1标签内容，受局部作用域的样式控制</h1>
+    <p>p标签内容，受局部作用域的样式控制</p>
+</article>
+```
+
+#### 7.7 script新增async属性
+
+html5为script新增了一个async属性，用来定义脚本是否异步执行。async仅适用于外部脚本（只有在使用src属性时）。
+
+和async【异步执行】相近的还有一个属性defer【推迟执行】，defer属性过去也有，但在html5中进行了更好的支持。
+
+使用：
+
+如果 async="async"：脚本相对于页面的其余部分异步地执行，因为async表示下载脚本文件，之后马上运行，运行的同时并不阻止浏览器去解析下面的内容，所以称之为异步。
+
+如果不使用 async 且 defer="defer"：脚本将在页面完成解析时执行，因为defer表示脚本下载完并不执行而是等页面全部加载完之后再执行。
+
+如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本。
+
+举例：
+
+在[jquery](http://code.jquery.com/)官网有两个jquery文件，如下。
+
+![](./img/juqery.png)
+
+我们就拿这两个文件举例，jquery-1.11.3.min.js是 标准库文件，93.7k。jquery-migrate-1.2.1.min.js是jquery向后兼容的文件，7.03k。代码如下。
+
+```html
+<!DOCTYPE>
+<meta charset="utf-8"></meta>
+<meta http-equiv="prama" content="no-cache"><!--禁止掉页面缓存-->
+<script defer src="http://code.jquery.com/jquery-1.11.3.min.js" onload="alert('a')"></script>
+<script async src="http://code.jquery.com/jquery-migrate-1.2.1.min.js" onload="alert('b')"></script>
+```
+
+运行效果，先弹出b，后弹出a。
+
 ### 8. 废除标签
 
 #### 8.1 可以使用css代替的标签
@@ -752,3 +866,9 @@ abbr替代acronym
 废除nextid使用guids
 
 废除plaintex使用“text/plian”（无格式正文）MIME类型替代。
+
+
+
+
+
+更多资料 https://www.ibm.com/developerworks/cn/web/1212_zhouxiang_deepintohtml5/
