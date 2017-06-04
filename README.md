@@ -407,7 +407,7 @@ width和height来设置image类型的input标签的图像的宽高。
 
 #### 4.9 list属性
 
-list属性与 [datalist](http://www.cnblogs.com/starof/p/4581850.html#datalist)标签配合使用，用来规定输入域的datalist。datalist是输入域的选项列表，该元素类似<select>，但是比select更好的一点在，当用户要设定的值不在选择列表内时，允许自行输入,该元素本身不显示，当文本框获得焦点时以提示输入的方式显示。
+list属性与 [datalist](http://www.cnblogs.com/starof/p/4581850.html#datalist) 标签配合使用，用来规定输入域的datalist。datalist是输入域的选项列表，该元素类似 select ，但是比select更好的一点在，当用户要设定的值不在选择列表内时，允许自行输入,该元素本身不显示，当文本框获得焦点时以提示输入的方式显示。
 
 list属性适用于input[text,search,url,telephone,email,datepickers,numbers,range,color]
 
@@ -435,7 +435,11 @@ list值为文档中的 datalist 的 id，又看到了熟悉的id，回想一下f
 
 前面讲了autocomplete属性可以让用户完成域输入时，浏览器在该域内显示填写的选项。现在datalist元素与autocomplete属性配合使用可更好的提升用户体验。
 
-在上面代码基础上给datalist增加autocomplete属性，即<datalist id="url_list" autocomplete>。
+在上面代码基础上给datalist增加autocomplete属性
+
+```html
+<datalist id="url_list" autocomplete>
+```
 
 用户第一次输入http://www.google.com提交后，再次输入时会同时给出datalist的option提示和autocomplete增加的提示。
 
@@ -641,3 +645,41 @@ html中：
 	<param name="src" value="someaudio.wov">
 </object>
 ```
+
+#### 6.3 embed标签
+
+定义外部的可交互的内容或插件，用来嵌入内容（包括各种媒体）。
+
+格式可以是Midi,Wav,AIFF,AU,MP3,flash等。可以在不使用插件的情况下操作媒体文件，极大提升用户体验。
+
+例：
+
+html5：
+
+```html
+<embed src="flash.swf" />
+```
+
+html中：
+
+```html
+<object data="flash.swf" type="application/x-shockwave-flash"></object>
+```
+
+#### 6.4 其他功能标签
+
+##### 6.4.1 mark标签
+
+黄色高亮显示选择文本。主要用来在视觉上向用户呈现哪些需要突出显示或高亮显示的文字。典型应用搜索结果中高亮显示搜素关键字。
+
+举例：
+
+```html
+<p>html5:一段文字<mark>高亮显示</mark></p>
+<p>html:一段文字<span style="background-color:yellow;">高亮显示</span></p>
+```
+
+![](./img/mark.png)
+
+
+
