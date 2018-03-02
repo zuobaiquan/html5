@@ -117,12 +117,8 @@ POST的主要任务是提交数据，但在提交数据之后服务器也会向�
 
 http://v.qq.com/iframe/player.html?vid=i05205vnhr5&tiny=0&auto=0
 
-
-
 PPT资料
 
 https://ptteng.github.io/PPT/PPT/js-05-EnctypeofPOST.html
-
-
 
 更多资料https://ptteng.github.io/PPT/webIndex.html
