@@ -20,13 +20,13 @@
     var ctx=c.getContext("2d");
 
     //fillStyle 属性设置或返回用于填充绘画的颜色、渐变或模式。
-    //ctx.fillStyle="#0000ff";
-    //fillRect() 方法绘制“已填色”的矩形。默认的填充颜色是黑色。
-    //ctx.fillRect(50,10,400,100);
+    ctx.fillStyle="#0000ff";
 
-    ctx.strokeStyle="red";//设置笔触的颜色、渐变或模式。
-    ctx.lineWidth=10;
-    //strokeRect() 方法绘制矩形（不填色）。笔触的默认颜色是黑色。
-    ctx.strokeRect(50,10,400,100);
+    ctx.shadowBlur=50;//设置或返回用于阴影的模糊级别
+    ctx.shadowColor="black";//设置或返回用于阴影的颜色。
+    ctx.shadowOffsetX=30; //设置或返回形状与阴影的水平距离。正值显示在形状 left 位置右侧，负值显示在形状 left 位置左侧
+    ctx.shadowOffsetY=60; //设置或返回形状与阴影的垂直距离。正值显示在top的下方，负值显示在top的上方
+    //fillRect() 方法绘制“已填色”的矩形。默认的填充颜色是黑色。
+    ctx.fillRect(50,10,400,100);
   </script>
 </html>
