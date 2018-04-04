@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <!-- 默认canvas生成300X150大小的画布,首先canvas的宽高写在内联里面,写在样式表会出现大小实际不符合 -->
+    <!-- 默认canvas生成300X150大小的画布,canvas的宽高写在内联里面,写在样式表会出现大小实际不符合 -->
     <canvas id="myCanvas" class="my-canvas" width="1000" style="border:1px solid red;"></canvas>
   </body>
   <script type="text/javascript">
@@ -21,10 +21,11 @@
 
     //fillStyle 属性设置或返回用于填充绘画的颜色、渐变或模式。
     //ctx.fillStyle="#0000ff";
-
     //fillRect() 方法绘制“已填色”的矩形。默认的填充颜色是黑色。
     //ctx.fillRect(50,10,400,100);
 
+    ctx.strokeStyle="red";//设置笔触的颜色、渐变或模式。
+    ctx.lineWidth=10;
     //strokeRect() 方法绘制矩形（不填色）。笔触的默认颜色是黑色。
     ctx.strokeRect(50,10,400,100);
   </script>
