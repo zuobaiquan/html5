@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      /* .my-canvas{
+        width: 1000px;
+        height: 300px;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- 默认canvas生成300X150大小的画布,canvas的宽高写在内联里面,写在样式表会出现大小实际不符合 -->
+    <canvas id="myCanvas" class="my-canvas" width="1000" style="border:1px solid red;"></canvas>
+  </body>
+  <script type="text/javascript">
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+
+    //创建线性的渐变对象,渐变可用于填充矩形、圆形、线条、文本等等。
+    //createLinearGradient(x0,y0,x1,y1);
+    //x0 渐变开始点的 x 坐标
+    //y0 渐变开始点的 y 坐标
+    //x1 渐变结束点的 x 坐标
+    //y1 渐变结束点的 y 坐标
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"black");
+    grd.addColorStop(0.5,"red");
+    grd.addColorStop(1,"white");
+
+    //填充渐变
+    ctx.fillStyle=grd;
+    ctx.fillRect(50,10,400,100);
+  </script>
+</html>
