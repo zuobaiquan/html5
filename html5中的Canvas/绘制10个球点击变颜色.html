@@ -33,7 +33,7 @@
         balls[i] = ball;
     }
     draw();
-    canvas.onclick=function(){
+    canvas.onclick=function(event){
         //标准的获取鼠标点击相对于canvas画布的坐标公式
         var x = event.pageX - canvas.getBoundingClientRect().left;
         var y = event.pageY - canvas.getBoundingClientRect().top;
