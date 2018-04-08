@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style type="text/css">
+        #canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var cxt = canvas.getContext('2d');
+drawStar(cxt,10,20,100,100,1,50,'red','green');
+//https://www.cnblogs.com/wufangfang/p/6373972.html
+function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillStyle){
+    cxt.beginPath();
+    for( var i = 0 ; i < 5 ; i ++){
+        cxt.lineTo(Math.cos((18+72*i - rot)/180*Math.PI) * R + x ,- Math.sin((18+72*i - rot )/180*Math.PI) * R + y);
+        cxt.lineTo(Math.cos((54+72*i - rot)/180*Math.PI) * r + x ,- Math.sin((54+72*i - rot )/180*Math.PI) * r + y);
+    }
+    cxt.closePath();
+    //路径要有开始和结束，写路径时一定要加上，避免出现不必要的bug
+
+    cxt.lineWidth = borderWidth;
+    cxt.strokeStyle = borderStyle;
+    cxt.fillStyle = fillStyle;
+
+    cxt.fill();
+    cxt.stroke();
+}
+</script>
+</html>
