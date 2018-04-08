@@ -6,20 +6,18 @@
     <style type="text/css">
         #canvas{
             border: 1px solid black;
-            display: block;
         }
     </style>
 </head>
 <body>
     <canvas id="canvas" width="1000" height="600"></canvas>
 </body>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
     /**
      * 获取 canvas 画布
      * 获取 canvas 绘图上下文环境
      */
-    var canvas = $('#canvas')[0];
+    var canvas = document.getElementById('canvas');
     var cxt = canvas.getContext('2d');
     var balls = [];
     /**
@@ -28,14 +26,14 @@
      */
     for(var i = 0; i < 10; i++){
         var ball = {
-            X: Math.random()*canvas.width,
-            Y: Math.random()*canvas.height,
+            X: Math.random()*canvas.offsetWidth,
+            Y: Math.random()*canvas.offsetHeight,
             R: Math.random()*50 + 20
         }
         balls[i] = ball;
     }
     draw();
-    $("#canvas").click(function(){
+    canvas.onclick=function(){
         //标准的获取鼠标点击相对于canvas画布的坐标公式
         var x = event.pageX - canvas.getBoundingClientRect().left;
         var y = event.pageY - canvas.getBoundingClientRect().top;
@@ -47,7 +45,7 @@
                 cxt.fill();
             }
         }
-    });
+    }
     function draw(){
         cxt.fillStyle = "blue";
         for(var i = 0; i < balls.length; i++){
