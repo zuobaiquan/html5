@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <div id="warp">
-      <div class="clock">
-      <!--钟表数字-->
-      <div class="number">
-          <div><span>1</span></div>
-          <div><span>2</span></div>
-          <div><span>3</span></div>
-          <div><span>4</span></div>
-          <div><span>5</span></div>
-          <div><span>6</span></div>
-          <div><span>7</span></div>
-          <div><span>8</span></div>
-          <div><span>9</span></div>
-          <div><span>10</span></div>
-          <div><span>11</span></div>
-          <div><span>12</span></div>
-      </div>
-      <!--时针，分针，秒针-->
-      <div id="hour"></div>
-      <div id="minute"></div>
-      <div id="seconds"></div>
-      <div id="center"></div>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="warp">
+  <div class="clock">
+  <!--钟表数字-->
+    <div class="number">
+      <div><span>1</span></div>
+      <div><span>2</span></div>
+      <div><span>3</span></div>
+      <div><span>4</span></div>
+      <div><span>5</span></div>
+      <div><span>6</span></div>
+      <div><span>7</span></div>
+      <div><span>8</span></div>
+      <div><span>9</span></div>
+      <div><span>10</span></div>
+      <div><span>11</span></div>
+      <div><span>12</span></div>
     </div>
-    <script type="text/javascript" src="index.js"></script>
-  </body>
+    <!--时针，分针，秒针-->
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="seconds"></div>
+    <div id="center"></div>
+  </div>
+</div>
+<script type="text/javascript" src="index.js"></script>
+<!-- 思路：
+1）在body中构建好始终的静态DOM结构
+2）在CSS中设置好DOM结构的样式
+3）在js文件中设置DOM的运动样式 -->
+</body>
 </html>

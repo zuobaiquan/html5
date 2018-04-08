@@ -13,11 +13,11 @@
     <canvas id="canvas" width="1000" height="600"></canvas>
 </body>
 <script type="text/javascript">
-var canvas = document.getElementById('canvas');
-var cxt = canvas.getContext('2d');
-drawStar(cxt,10,20,100,100,1,50,'red','green');
-//https://www.cnblogs.com/wufangfang/p/6373972.html
-function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillStyle){
+  var canvas = document.getElementById('canvas');
+  var cxt = canvas.getContext('2d');
+  drawStar(cxt,10,20,100,100,1,50,'red','green');
+  //https://www.cnblogs.com/wufangfang/p/6373972.html
+  function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillStyle){
     cxt.beginPath();
     for( var i = 0 ; i < 5 ; i ++){
         cxt.lineTo(Math.cos((18+72*i - rot)/180*Math.PI) * R + x ,- Math.sin((18+72*i - rot )/180*Math.PI) * R + y);
@@ -32,6 +32,6 @@ function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillS
 
     cxt.fill();
     cxt.stroke();
-}
+  }
 </script>
 </html>
