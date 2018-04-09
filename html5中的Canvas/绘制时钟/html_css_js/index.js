@@ -26,7 +26,8 @@ window.onload = function(){
       var secondes = document.getElementById("seconds");
       secondes.style.transform = "rotate("+nowSeconds*6+"deg)";
       minutes.style.transform = "rotate("+nowMinutes*6+"deg)";
-      hours.style.transform = "rotate("+(nowHours*30+nowMinutes*6/360*30)+"deg)";//时的度数，加上分钟度数占360的百分比乘以30度等于当前时针的度数
+      //时的度数，加上分钟度数占360的百分比乘以30度等于当前时针的度数
+      hours.style.transform = "rotate("+(nowHours*30+nowMinutes*6/360*30)+"deg)";
     },1000)
   }
   run();
