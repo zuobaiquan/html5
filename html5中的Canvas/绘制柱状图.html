@@ -7,63 +7,63 @@
 <body>
 <canvas id="canvas" width="1260" height="324"></canvas>
 <script type="text/javascript">
-  //思路：
-  // 1）将每个柱子颜色取出来保存在数组colors中，将每个柱子数值取出来保存在数组nums中，规定每个柱子宽度为60，间隔为30
-  // 2）根据for循环的数量的判断，绘制行线、横坐标和侧边线可以放在一个for循环里面，绘制柱子和柱子顶端数值可以放在一个for循环里面，因此需要构造两个函数。
-  // 注意：这里图表高度就是画布的高度，所以右侧边线直接在样式表中用border-right设置，左侧在js中绘制
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  var nums = [146,72,60,102,75,43,146,283,83,46,106,71,42];
-  var colors = ["#fb00fe","#000000","#fdd10a","#0000fd","#fc4ca4","#fc9409","#c17232","#1b79ff","#22ff08","#c6a678","#fa0007","#a1ff25","#0b5402"]
-  //逐个柱子占位宽度和间距共90
-  var cols = (canvas.width - 90)/nums.length;
-  var colGaps = 60;//定义柱状图宽度
-  // 绘制行
-  function drawRows(){
-    var rows = 9;
-    //列步长
-    var rW = canvas.height/rows;
-    for (var i = 0 ; i <= rows; i ++){
-      ctx.beginPath();
-      //绘制行
-      ctx.moveTo(90,i*rW);
-      ctx.lineTo(canvas.width,i*rW);
-      //绘制坐标点
-      ctx.font = "15px scans-serif";
-      ctx.fillStyle = "#92000f";
-      //设置好字体才能计算字体宽度
-      var colsNo = ctx.measureText(i*36);
-      ctx.fillText(i*36,85-colsNo.width,canvas.height - i*36);
-      //绘制图标左侧边线,为了避免重新定义绘制它的方法，这里把它放在for循环里面，所以在相同位置画了10遍
-      ctx.moveTo(90,0);
-      ctx.lineTo(90,canvas.height);
-      ctx.closePath();
-      ctx.stroke();
-    }
+//思路：
+// 1）将每个柱子颜色取出来保存在数组colors中，将每个柱子数值取出来保存在数组nums中，规定每个柱子宽度为60，间隔为30
+// 2）根据for循环的数量的判断，绘制行线、横坐标和侧边线可以放在一个for循环里面，绘制柱子和柱子顶端数值可以放在一个for循环里面，因此需要构造两个函数。
+// 注意：这里图表高度就是画布的高度，所以右侧边线直接在样式表中用border-right设置，左侧在js中绘制
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var nums = [146,72,60,102,75,43,146,283,83,46,106,71,42];
+var colors=["#fb00fe","#000000","#fdd10a","#0000fd","#fc4ca4","#fc9409","#c17232","#1b79ff","#22ff08","#c6a678","#fa0007","#a1ff25","#0b5402"]
+//逐个柱子占位宽度和间距共90
+var cols = (canvas.width - 90)/nums.length;
+var colGaps = 60;//定义柱状图宽度
+// 绘制行
+function drawRows(){
+  var rows = 9;
+  //列步长
+  var rW = canvas.height/rows;
+  for (var i = 0 ; i <= rows; i ++){
+    ctx.beginPath();
+    //绘制行
+    ctx.moveTo(90,i*rW);
+    ctx.lineTo(canvas.width,i*rW);
+    //绘制坐标点
+    ctx.font = "15px scans-serif";
+    ctx.fillStyle = "#92000f";
+    //设置好字体才能计算字体宽度
+    var colsNo = ctx.measureText(i*36);
+    ctx.fillText(i*36,85-colsNo.width,canvas.height - i*36);
+    //绘制图标左侧边线,为了避免重新定义绘制它的方法，这里把它放在for循环里面，所以在相同位置画了10遍
+    ctx.moveTo(90,0);
+    ctx.lineTo(90,canvas.height);
+    ctx.closePath();
+    ctx.stroke();
   }
-  //绘制柱子和顶端数字
-  function drawRects(){
-    for (var i = 0;i < nums.length; i ++){
-      //绘制柱状图
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = '#000';
-      ctx.fillStyle = colors[i];
-      ctx.beginPath();
-      //横坐标为90的倍数，纵坐标为画布高度减去柱子高度
-      ctx.rect((i+1)*cols,canvas.height-nums[i],colGaps,nums[i]);
-      ctx.fill();
-      //绘制柱状图顶部数值
-      ctx.font = "18px scans-serif";
-      ctx.fillStyle = "black";
-      var text = ctx.measureText(nums[i]);
-      //数字横坐标为90的倍数加上柱子宽度减去自身宽度的差的一半的和，纵坐标为画布高度减去柱子高度再减去一个合适的值
-      ctx.fillText(nums[i],(i+1)*cols+(colGaps-text.width)/2,canvas.height-nums[i]-5);
-      ctx.closePath();
-      ctx.stroke();
-    }
+}
+//绘制柱子和顶端数字
+function drawRects(){
+  for (var i = 0;i < nums.length; i ++){
+    //绘制柱状图
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#000';
+    ctx.fillStyle = colors[i];
+    ctx.beginPath();
+    //横坐标为90的倍数，纵坐标为画布高度减去柱子高度
+    ctx.rect((i+1)*cols,canvas.height-nums[i],colGaps,nums[i]);
+    ctx.fill();
+    //绘制柱状图顶部数值
+    ctx.font = "18px scans-serif";
+    ctx.fillStyle = "black";
+    var text = ctx.measureText(nums[i]);
+    //数字横坐标为90的倍数加上柱子宽度减去自身宽度的差的一半的和，纵坐标为画布高度减去柱子高度再减去一个合适的值
+    ctx.fillText(nums[i],(i+1)*cols+(colGaps-text.width)/2,canvas.height-nums[i]-5);
+    ctx.closePath();
+    ctx.stroke();
   }
-  drawRows();//画行线和横坐标
-  drawRects();//画柱子和数值
+}
+drawRows();//画行线和横坐标
+drawRects();//画柱子和数值
 </script>
 </body>
 </html>

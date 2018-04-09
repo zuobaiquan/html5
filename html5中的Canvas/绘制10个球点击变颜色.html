@@ -13,46 +13,46 @@
   <canvas id="canvas" width="1000" height="600"></canvas>
 </body>
 <script type="text/javascript">
-  /**
-   * 获取 canvas 画布
-   * 获取 canvas 绘图上下文环境
-   */
-  var canvas = document.getElementById('canvas');
-  var cxt = canvas.getContext('2d');
-  var balls = [];
-  /**
-   * 事件交互, 点击事件为例
-   * isPointInPath(横坐标, 纵坐标)
-   */
-  for(var i = 0; i < 10; i++){
-      var ball = {
-          X: Math.random()*canvas.offsetWidth,
-          Y: Math.random()*canvas.offsetHeight,
-          R: Math.random()*50 + 20
-      }
-      balls[i] = ball;
+/**
+ * 获取 canvas 画布
+ * 获取 canvas 绘图上下文环境
+ */
+var canvas = document.getElementById('canvas');
+var cxt = canvas.getContext('2d');
+var balls = [];
+/**
+ * 事件交互, 点击事件为例
+ * isPointInPath(横坐标, 纵坐标)
+ */
+for(var i = 0; i < 10; i++){
+  var ball = {
+    X: Math.random()*canvas.offsetWidth,
+    Y: Math.random()*canvas.offsetHeight,
+    R: Math.random()*50 + 20 // 20 ~ 70
   }
-  draw();
-  canvas.onclick=function(event){
-      //标准的获取鼠标点击相对于canvas画布的坐标公式
-      var x = event.pageX - canvas.getBoundingClientRect().left;
-      var y = event.pageY - canvas.getBoundingClientRect().top;
-      for(var i = 0; i < balls.length; i++){
-          cxt.beginPath();
-          cxt.arc(balls[i].X, balls[i].Y, balls[i].R, 0, Math.PI*2);
-          if(cxt.isPointInPath(x, y)){
-              cxt.fillStyle = "red";
-              cxt.fill();
-          }
-      }
+  balls[i] = ball;
+}
+draw();
+canvas.onclick=function(event){
+  //标准的获取鼠标点击相对于canvas画布的坐标公式
+  var x = event.pageX - canvas.getBoundingClientRect().left;
+  var y = event.pageY - canvas.getBoundingClientRect().top;
+  for(var i = 0; i < balls.length; i++){
+    cxt.beginPath();
+    cxt.arc(balls[i].X, balls[i].Y, balls[i].R, 0, Math.PI*2);
+    if(cxt.isPointInPath(x, y)){
+      cxt.fillStyle = "red";
+      cxt.fill();
+    }
   }
-  function draw(){
-      cxt.fillStyle = "blue";
-      for(var i = 0; i < balls.length; i++){
-          cxt.beginPath();
-          cxt.arc(balls[i].X, balls[i].Y, balls[i].R, 0, Math.PI*2);
-          cxt.fill();
-      }
+}
+function draw(){
+  cxt.fillStyle = "blue";
+  for(var i = 0; i < balls.length; i++){
+    cxt.beginPath();
+    cxt.arc(balls[i].X, balls[i].Y, balls[i].R, 0, Math.PI*2);
+    cxt.fill();
   }
+}
 </script>
 </html>
