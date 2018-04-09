@@ -17,7 +17,6 @@
   // 1）考虑到横坐标数值跟画布的实际像素值不能对应，因此要将实际数值等比例转化为像素值再应用；
   // 2）在绘制横坐标时，横坐标点数比纵坐标少一个，需要进行一次判断；
   // 3）这里绘制菱形和其他绘制放在同一个函数里，所以不能用平移坐标和旋转矩形的方法。
-  //
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   nums = [268,1236,1273,1545,1988];
@@ -72,10 +71,10 @@
       ctx.fillText((nums.length-i)*500,90-colText.width,i*100+55);
       //绘制横坐标并判断
       if (i < 5){
-          var rowText = ctx.measureText(datas[i]);
-          ctx.fillText(datas[i],numsX-rowText.width/2,570);
+        var rowText = ctx.measureText(datas[i]);
+        ctx.fillText(datas[i],numsX-rowText.width/2,570);
       }else if(i == 5) {
-          return;
+        return;
       }
       ctx.closePath();
       ctx.stroke();

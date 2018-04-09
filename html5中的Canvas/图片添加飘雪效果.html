@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <style media="screen">
-  canvas {
-      border:1px solid red;
-      /*添加背景图片*/
-      background: url(https://files.cnblogs.com/files/zuobaiquan01/snow.bmp);
-  }
-  </style>
+<meta charset="utf-8">
+<title></title>
+<style media="screen">
+canvas {
+  border:1px solid red;
+  /*添加背景图片*/
+  background: url(https://files.cnblogs.com/files/zuobaiquan01/snow.bmp) no-repeat;
+  background-size: 100%;
+}
+</style>
 </head>
 <body>
 <canvas id="canvas" width="800" height="600"></canvas>
@@ -20,7 +21,6 @@
   // 3）创建一堆雪花之前先创建出一个雪花类，然后对这一个雪花不断调用就可以得到很多雪花飘落的特效。
   // 利用面向对象的思路分析一个雪花类具备的属性和方法，属性有雪花的起始位置（画布顶端），雪花颜色（白色），终止位置（画布底部），随机速度范围，绘制学画圆形的起止角度。雪花类有两个原型方法，一个是画出雪花形状的方法draw，另一个是运动方法sports，画出来的这个雪花运动才有效果，所以画出雪花后就调用sposts函数使其具备运动“性能”。
   // 4）这样雪花的属性和方法由雪花类创建出来了，由于需要很多个雪花，就将创建的雪花实例放在数组中，然后调用雪花类的方法，将这些代码封装在一个show函数中，在里面用requestAnimationFrame不断自我调用，实现众多雪花的效果。
-
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   //定义一个随机函数
@@ -60,7 +60,7 @@
     var A = new AnimationClass();//创建一个雪花动画A
     dataArr.push(A);//将创建的雪花动画储存在数组dataArr中
     //调用创建的数组中雪花对象方法
-    for (var i in dataArr){
+    for(var i in dataArr){
       dataArr[i].draw();
     }
     requestAnimationFrame(show);//循环调用

@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <style media="screen">
-      *{margin:0;padding:0;}
-      /* .my-canvas{
-        width: 1000px;
-        height: 300px;
-      } */
-    </style>
-  </head>
-  <body>
-    <!-- 默认canvas生成300X150大小的画布,canvas的宽高写在内联里面,写在样式表会出现大小实际不符合 -->
-    <canvas id="myCanvas" class="my-canvas" width="1000" style="border:1px solid red;"></canvas>
-  </body>
-  <script type="text/javascript">
-    var c=document.getElementById("myCanvas");
-    var ctx=c.getContext("2d");
-
-    ctx.strokeStyle="red";//设置笔触的颜色、渐变或模式。
-    ctx.lineWidth=10; //设置笔触的宽度
-    ctx.lineJoin="round";//"bevel|round|miter";
-    //strokeRect() 方法绘制矩形（不填色）。笔触的默认颜色是黑色。
-    ctx.strokeRect(50,10,400,100);
-  </script>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style media="screen">
+  *{margin:0;padding:0;}
+  /* .my-canvas{
+    width: 1000px;
+    height: 300px;
+  } */
+</style>
+</head>
+<body>
+<!-- 默认canvas生成300X150大小的画布,canvas的宽高写在内联里面,写在样式表会出现大小实际不符合 -->
+<canvas id="myCanvas" class="my-canvas" width="1000" style="border:1px solid red;"></canvas>
+<script type="text/javascript">
+  var c=document.getElementById("myCanvas");
+  var ctx=c.getContext("2d");
+  ctx.strokeStyle="red";//设置笔触的颜色、渐变或模式。
+  ctx.lineWidth=10; //设置笔触的宽度
+  ctx.lineJoin="round";//"bevel|round|miter";
+  //strokeRect() 方法绘制矩形（不填色）。笔触的默认颜色是黑色。
+  ctx.strokeRect(50,10,400,100);
+</script>
+</body>
 </html>
