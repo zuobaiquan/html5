@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>canvas签名</title>
+<style>
+  * {margin: 0;padding: 0; }
+  body {background: #e7e7e7;}
+  canvas {
+    display: block;
+    margin: 50px auto;
+    background: #fff;
+  }
+  button {
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin: 20px auto 0;
+    border: 0;
+    border-radius: 5px;
+    background: #2ca2dd;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<canvas>您当前浏览器不支持canvas，建议更换浏览器！</canvas>
+<button>导出png</button>
+<button>清空画布</button>
+<script>
+  var canvas = document.querySelector('canvas'),
+    oBtn = document.querySelectorAll('button'),
+    ctx = canvas.getContext('2d');
+  var _x = 0,_y = 0,x = 0,y = 0;
+  // 设置画布大小
+  canvas.width = 300;
+  canvas.height = 200;
+  // 开始绘制
+  canvas.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+    _x = e.touches[0].pageX,
+    _y = e.touches[0].pageY;
+    // 路径开始
+    ctx.beginPath();
+    ctx.moveTo(_x - canvas.offsetTop, _y - canvas.offsetLeft);
+
+    // 路径移动
+    this.addEventListener('touchmove', function (e) {
+      x = e.touches[0].pageX,
+      y = e.touches[0].pageY;
+      ctx.lineTo(x - canvas.offsetTop, y - canvas.offsetLeft);
+      ctx.stroke();
+    });
+  });
+  // 导出图片
+  oBtn[0].onclick = function () {
+    var oImg = new Image();
+    ctx.drawImage(oImg, 0, 0);
+    oImg.src = canvas.toDataURL('image/png');
+    document.body.appendChild(oImg);
+  }
+  // 清空画布
+  oBtn[1].onclick = function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+</script>
+</body>
+</html>
