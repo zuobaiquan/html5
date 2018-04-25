@@ -550,49 +550,41 @@ body {
 <div>悦悦</div>
 <div>Happy birthday</div>
 <p>永远18岁，么么哒</p>
-<audio style="display:none; height: 0" id="bg-music" preload="auto" src="https://zuobaiquan.github.io/html5/img/birthday.mp3" loop="loop"></audio>
+<div class="musicinfo" id="musicinfo">
+    <audio id="musicid" src="music.mp3" preload="preload" autoplay="autoplay"  loop="loop">您的浏览器不支持 audio标签。</audio>
+    <img class="music on roate" src="https://zuobaiquan.github.io/html5/img/birthday.mp3">
 </div>
-<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
-<script>
-        //音乐自动播放
-        $(document).ready(function(){
-            autoPlayMusic();
-            audioAutoPlay();
-        });
-        function audioAutoPlay() {
-            var audio = document.getElementById('bg-music');
-            audio.play();
-            document.addEventListener("WeixinJSBridgeReady", function () {
-                audio.play();
-            }, false);
-        }
-        // 音乐播放
-        function autoPlayMusic() {
-            // 自动播放音乐效果，解决浏览器或者APP自动播放问题
-            function musicInBrowserHandler() {
-                musicPlay(true);
-                document.body.removeEventListener('touchstart', musicInBrowserHandler);
-            }
-            document.body.addEventListener('touchstart', musicInBrowserHandler);
-            // 自动播放音乐效果，解决微信自动播放问题
-            function musicInWeixinHandler() {
-                musicPlay(true);
-                document.addEventListener("WeixinJSBridgeReady", function () {
-                    musicPlay(true);
-                }, false);
-                document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
-            }
-            document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
-        }
-        function musicPlay(isPlay) {
-            var media = document.querySelector('#bg-music');
-            if (isPlay && media.paused) {
-                media.play();
-            }
-            if (!isPlay && !media.paused) {
-                media.pause();
-            }
-        }
-    </script>
+</div>
+<script type="text/javascript">
+	// 音乐播放
+	function autoPlayMusic() {
+	    // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+	    function musicInBrowserHandler() {
+	        musicPlay(true);
+	        document.body.removeEventListener('touchstart', musicInBrowserHandler);
+	    }
+	    document.body.addEventListener('touchstart', musicInBrowserHandler);
+
+	    // 自动播放音乐效果，解决微信自动播放问题
+	    function musicInWeixinHandler() {
+	        musicPlay(true);
+	        document.addEventListener("WeixinJSBridgeReady", function () {
+	            musicPlay(true);
+	        }, false);
+	        document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+	    }
+	    document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+	}
+	function musicPlay(isPlay) {
+	    var audio = document.getElementById('musicid');
+	    if (isPlay && audio.paused) {
+	        audio.play();
+	    }
+	    if (!isPlay && !audio.paused) {
+	        audio.pause();
+	    }
+	}
+	autoPlayMusic();
+</script>
 </body>
 </html>
