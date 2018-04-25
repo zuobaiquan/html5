@@ -512,6 +512,25 @@ body {
     background: transparent;
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor, 0 0 55px currentColor, 0 0 75px currentColor, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor, 0 0 55px currentColor, 0 0 75px currentColor, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor, 0 0 55px currentColor, 0 0 75px currentColor, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor, 0 0 55px currentColor;
 }
+@keyframes ripple {
+0% {
+opacity:0.5;
+-webkit-transform: scale(0.5);
+            transform: scale(0.5);
+}
+50% {
+-webkit-transform: scale(1);
+            transform: scale(1);
+}
+100% {
+-webkit-transform: scale(1.5);
+            transform: scale(1.5);
+}
+}
+.birthday{
+	-webkit-animation: ripple 1s linear infinite alternate;
+          animation: ripple 1s linear infinite alternate;
+}
 </style>
 </head>
 <body>
@@ -548,7 +567,7 @@ body {
 <div class="normal-rocket"></div>
 <div class="text">
 <div>悦悦</div>
-<div>Happy birthday</div>
+<div class="birthday">Happy birthday</div>
 <p>永远18岁，么么哒</p>
 <div class="musicinfo" id="musicinfo">
     <audio id="musicid" src="./img/birthday.mp3" preload="preload" autoplay="autoplay"  loop="loop">您的浏览器不支持 audio标签。</audio>
